@@ -23,8 +23,8 @@ const authenticate = async () => {
   try {
     const response = await http.get('/twitter');
     console.log(response)
-    if (response.data) {
-      userLocal = await JSON.stringify(response.data);
+    if (response) {
+      userLocal = await JSON.stringify(response);
       localStorage.setItem(constants.CURRENT_TOKEN_KEY, userLocal);
       return userLocal;
     } else {
