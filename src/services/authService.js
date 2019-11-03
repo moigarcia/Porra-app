@@ -21,6 +21,7 @@ let userLocal = localStorage.getItem(constants.CURRENT_USER_KEY);
 
 const authenticate = async () => {
   try {
+    
     const response = await http.get('/twitter');
     console.log(response)
     if (response) {
