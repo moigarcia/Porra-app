@@ -21,7 +21,7 @@ const Login = () => {
       .authenticate()
       .then(responseJson => {
         console.log("responsejson ", responseJson)
-        setCurrentUser(responseJson.user);
+        setCurrentUser(responseJson);
       })
       .catch(error => {
         throw error;
