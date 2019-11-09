@@ -20,6 +20,7 @@ const Login = () => {
     authService
       .authenticate()
       .then(responseJson => {
+        console.log("responsejson ", responseJson)
         setCurrentUser(responseJson.user);
       })
       .catch(error => {

@@ -1,5 +1,5 @@
-import http from './base-http-service';
-import { constants } from '../utils/constants';
+import http from "./base-http-service";
+import { constants } from "../utils/constants";
 
 let userLocal = localStorage.getItem(constants.CURRENT_USER_KEY);
 
@@ -10,7 +10,7 @@ let userLocal = localStorage.getItem(constants.CURRENT_USER_KEY);
 //         Authentication: idToken,
 //         'Content-Type': 'application/json'
 //Accept: "application/json",
-    //     "Access-Control-Allow-Credentials": true
+//     "Access-Control-Allow-Credentials": true
 //       }
 //     });
 //     userLocal = await JSON.stringify(responseUser.data);
@@ -21,38 +21,37 @@ let userLocal = localStorage.getItem(constants.CURRENT_USER_KEY);
 //   }
 // };
 
-const authenticate = async () => {
-  try {
-    const response = await fetch("https://porra-api.herokuapp.com/auth/login/success", {
-        method: "GET",
-        credentials: "include",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Credentials": true
-        }
-      })
-    console.log(response)
-    if (response) {
-      userLocal = await JSON.stringify(response);
-      localStorage.setItem(constants.CURRENT_TOKEN_KEY, userLocal);
-      return userLocal;
-    } else {
-      throw response;
+const authenticate = () => {
+  fetch("https://porra-api.herokuapp.com/auth/login/success", {
+    method: "GET",
+    credentials: "include",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Credentials": true
     }
-  } catch (error) {
-    throw error;
-  }
+  })
+    .then(response => {
+      if (response.status === 200) return response.json();
+      throw new Error("failed to authenticate user");
+    })
+    .then(responseJson => {
+      localStorage.setItem(
+        constants.CURRENT_TOKEN_KEY,
+        JSON.stringify(responseJson)
+      );
+      return JSON.stringify(responseJson);
+    })
+    .catch(error => {
+      throw error;
+    });
 };
-
-
 
 const logout = () => {
   userLocal = {};
   localStorage.removeItem(constants.CURRENT_USER_KEY);
   return userLocal;
 };
-
 
 export default {
   authenticate,
