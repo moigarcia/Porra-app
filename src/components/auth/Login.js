@@ -7,19 +7,7 @@ const Login = () => {
   const { currentUser, setCurrentUser } = useContext(AuthContext);
 
   useEffect(() => {
-    fetch("https://porra-api.herokuapp.com/auth/login/success", {
-      method: "GET",
-      credentials: "include",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Credentials": true
-      }
-    })
-      .then(response => {
-        if (response.status === 200) return response.json();
-        throw new Error("failed to authenticate user");
-      })
+    authService.authenticate()
       .then(responseJson => {
         setCurrentUser({
           authenticated: true,
@@ -34,22 +22,6 @@ const Login = () => {
       });
   }, [])
 
-  // const handleSubmit = useCallback(
-  //   async event => {
-  //     console.log("entra handlesubmit")
-  //     event.preventDefault();
-  //     try {
-  //       const response = await window.open("https://porra-api.herokuapp.com/auth/twitter", "_self")
-  //         console.log("response ", response)
-  //         setCurrentUser(JSON.parse(response));
-        
-  //     } catch (error) {
-  //       console.log(error)
-  //       throw error;
-  //       }
-  //   },
-  //   [setCurrentUser]
-  // );
   const signIn = () => window.open("https://porra-api.herokuapp.com/auth/twitter", "_self")
 
   if (currentUser) {
