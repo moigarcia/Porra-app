@@ -7,15 +7,6 @@ const Login = () => {
   const { currentUser, setCurrentUser } = useContext(AuthContext);
 
   useEffect(() => {
-    // fetch("https://porra-api.herokuapp.com/auth/login/success", {
-    //   method: "GET",
-    //   credentials: "include",
-    //   headers: {
-    //     Accept: "application/json",
-    //     "Content-Type": "application/json",
-    //     "Access-Control-Allow-Credentials": true
-    //   }
-    // })
 
     authService
       .authenticate()
@@ -24,7 +15,7 @@ const Login = () => {
         setCurrentUser(responseJson);
       })
       .catch(error => {
-        throw error;
+        setCurrentUser(error);
       });
   }, []);
 
