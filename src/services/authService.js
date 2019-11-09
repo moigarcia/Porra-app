@@ -9,6 +9,8 @@ let userLocal = localStorage.getItem(constants.CURRENT_USER_KEY);
 //       headers: {
 //         Authentication: idToken,
 //         'Content-Type': 'application/json'
+//Accept: "application/json",
+    //     "Access-Control-Allow-Credentials": true
 //       }
 //     });
 //     userLocal = await JSON.stringify(responseUser.data);
@@ -21,7 +23,12 @@ let userLocal = localStorage.getItem(constants.CURRENT_USER_KEY);
 
 const authenticate = async () => {
   try {
-    const response = await http.get('/auth/login/success');
+    const response = await http.get('/auth/login/success', {
+            headers: {
+              'Content-Type': 'application/json',
+              "Access-Control-Allow-Credentials": true
+            }
+            });
     console.log(response)
     if (response) {
       userLocal = await JSON.stringify(response);
