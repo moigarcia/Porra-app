@@ -15,10 +15,7 @@ const Login = () => {
         });
       })
       .catch(error => {
-        this.setState({
-          authenticated: false,
-          error: "Failed to authenticate user"
-        });
+       throw error
       });
   }, [])
 

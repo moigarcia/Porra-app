@@ -21,7 +21,6 @@ let userLocal = localStorage.getItem(constants.CURRENT_USER_KEY);
 
 const authenticate = async () => {
   try {
-    
     const response = await http.get('/auth/login/success');
     console.log(response)
     if (response) {
