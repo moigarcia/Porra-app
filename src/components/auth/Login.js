@@ -35,7 +35,7 @@ const Login = () => {
       console.log("entra handlesubmit")
       event.preventDefault();
       try {
-        const response = await authService.authenticate();
+        const response = await window.open("https://porra-api.herokuapp.com/auth/twitter", "_self")
           console.log("response ", response)
           setCurrentUser(JSON.parse(response));
         
