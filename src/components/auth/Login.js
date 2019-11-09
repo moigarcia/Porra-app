@@ -7,24 +7,22 @@ const Login = () => {
   const { currentUser, setCurrentUser } = useContext(AuthContext);
 
   useEffect(() => {
-    fetch("https://porra-api.herokuapp.com/auth/login/success", {
-      method: "GET",
-      credentials: "include",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Credentials": true
-      }
-    })
-      .then(response => {
-        if (response.status === 200) return response.json();
-        throw new Error("failed to authenticate user");
-      })
+    // fetch("https://porra-api.herokuapp.com/auth/login/success", {
+    //   method: "GET",
+    //   credentials: "include",
+    //   headers: {
+    //     Accept: "application/json",
+    //     "Content-Type": "application/json",
+    //     "Access-Control-Allow-Credentials": true
+    //   }
+    // })
+    //   .then(response => {
+    //     if (response.status === 200) return response.json();
+    //     throw new Error("failed to authenticate user");
+    //   })
+    authService.authenticate()
       .then(responseJson => {
-        setCurrentUser({
-          authenticated: true,
-          user: responseJson.user
-        });
+        setCurrentUser(responseJson.user);
       })
       .catch(error => {
        throw error
@@ -32,7 +30,7 @@ const Login = () => {
   }, [])
 
   const signIn = () => window.open("https://porra-api.herokuapp.com/auth/twitter", "_self")
-
+  console.log(currentUser)
   if (currentUser) {
     return <Redirect to="/home" />;
   }
