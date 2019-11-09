@@ -8,20 +8,32 @@ const Login = () => {
 
   useEffect(() => {
 
-    const authenticate = async () => {
-      try{
-        const response = await authService.authenticate()
-        setCurrentUser(response)
-      } catch(error) {
-        throw error
-      }
-    }
-    authenticate()
+    // const authenticate = async () => {
+    //   try{
+    //     const response = await authService.authenticate()
+    //     setCurrentUser(response)
+    //   } catch(error) {
+    //     throw error
+    //   }
+    // }
+    // authenticate()
   }, []);
 
-  const signIn = () =>
-    window.open("https://porra-api.herokuapp.com/auth/twitter", "_self");
+  const signIn = async () => {
+    try{
+    const response = window.open("https://porra-api.herokuapp.com/auth/twitter", "_self")
+    if (response) {
+      console.log(response)
+      const responseUser = await authService.authenticate()
+        setCurrentUser(responseUser)
+    }
+    } catch(error) {
+      throw error
+    }
+  }
+
   console.log(currentUser);
+
   if (currentUser) {
     return <Redirect to="/home" />;
   }
