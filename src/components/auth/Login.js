@@ -35,7 +35,7 @@ const Login = () => {
       console.log("entra handlesubmit")
       event.preventDefault();
       try {
-       //await authService.authenticate();
+       await authService.authenticate();
         const response = await authService.authenticate();
           console.log("response ", response)
           setCurrentUser(JSON.parse(response));
@@ -47,7 +47,7 @@ const Login = () => {
     },
     [setCurrentUser]
   );
-  const signIn = () => window.open("https://porra-api.herokuapp.com/auth/twitter", "_self")
+  //const signIn = () => window.open("https://porra-api.herokuapp.com/auth/twitter", "_self")
 
   if (currentUser) {
     return <Redirect to="/home" />;
@@ -55,7 +55,7 @@ const Login = () => {
 
   return (
     <div id="cms-box">
-      <button onClick={signIn} className="btn btn-primary"> Twitter </button>
+      <button onClick={handleSubmit} className="btn btn-primary"> Twitter </button>
     </div>
   );
 };
