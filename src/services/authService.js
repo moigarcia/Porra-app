@@ -3,24 +3,6 @@ import { constants } from "../utils/constants";
 
 let userLocal = localStorage.getItem(constants.CURRENT_USER_KEY);
 
-// const getUser = async idToken => {
-//   try {
-//     const responseUser = await http.get('/user/me', {
-//       headers: {
-//         Authentication: idToken,
-//         'Content-Type': 'application/json'
-//Accept: "application/json",
-//     "Access-Control-Allow-Credentials": true
-//       }
-//     });
-//     userLocal = await JSON.stringify(responseUser.data);
-//     localStorage.setItem(constants.CURRENT_USER_KEY, userLocal);
-//     return userLocal;
-//   } catch (error) {
-//     throw error;
-//   }
-// };
-
 const authenticate = () => {
   fetch("https://porra-api.herokuapp.com/auth/login/success", {
     method: "GET",
@@ -51,6 +33,7 @@ const authenticate = () => {
 const logout = () => {
   userLocal = {};
   localStorage.removeItem(constants.CURRENT_USER_KEY);
+  http.get('/logout')
   return userLocal;
 };
 
