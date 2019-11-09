@@ -37,7 +37,7 @@ const authenticate = () => {
     })
     .then(responseJson => {
       localStorage.setItem(
-        constants.CURRENT_TOKEN_KEY,
+        constants.CURRENT_USER_KEY,
         JSON.stringify(responseJson)
       );
       return JSON.stringify(responseJson);
