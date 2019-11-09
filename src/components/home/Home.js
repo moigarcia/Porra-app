@@ -1,7 +1,19 @@
-import React from "react";
+import React, { useContext} from "react";
+import { AuthContext } from "../../contexts/authContext";
+import { authService } from "../../services/index";
+import NavBar from '../navbar/NavBar';
 
 const Home = () => {
-  return <div>hola mundo!!!</div>; 
+  const { currentUser } = useContext(AuthContext);
+
+  const logOut = () => authService.logOut()
+
+
+  return (
+    <div id="cms-box">
+      <NavBar></NavBar>
+    </div>
+  );
 };
 
 export default Home;

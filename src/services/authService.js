@@ -25,12 +25,11 @@ const authenticate = () => {
       return JSON.stringify(responseJson);
     })
     .catch(error => {
-      console.log("error por authservice")
       throw error;
     });
 };
 
-const logout = () => {
+const logOut = () => {
   userLocal = {};
   localStorage.removeItem(constants.CURRENT_USER_KEY);
   http.get('/logout')
@@ -39,5 +38,5 @@ const logout = () => {
 
 export default {
   authenticate,
-  logout
+  logOut
 };

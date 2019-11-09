@@ -1,4 +1,4 @@
-import React, { useState, useContext, useCallback, useEffect } from "react";
+import React, { useContext } from "react";
 import { Redirect } from "react-router-dom";
 import { AuthContext } from "../../contexts/authContext";
 import { authService } from "../../services/index";
@@ -6,24 +6,10 @@ import { authService } from "../../services/index";
 const Login = () => {
   const { currentUser, setCurrentUser } = useContext(AuthContext);
 
-  useEffect(() => {
-
-    // const authenticate = async () => {
-    //   try{
-    //     const response = await authService.authenticate()
-    //     setCurrentUser(response)
-    //   } catch(error) {
-    //     throw error
-    //   }
-    // }
-    // authenticate()
-  }, []);
-
   const signIn = async () => {
     try{
     const response = window.open("https://porra-api.herokuapp.com/auth/twitter", "_self")
     if (response) {
-      console.log(response)
       const responseUser = await authService.authenticate()
         setCurrentUser(responseUser)
     }
