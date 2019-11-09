@@ -8,10 +8,15 @@ const Login = () => {
 
   useEffect(() => {
 
-    authService
-      .authenticate()
-        .then( response => setCurrentUser(response))
-        .catch( error => console.log(error))
+    const authenticate = async () => {
+      try{
+        const response = await authService.authenticate()
+        setCurrentUser(response)
+      } catch(error) {
+        throw error
+      }
+    }
+    authenticate()
   }, []);
 
   const signIn = () =>
