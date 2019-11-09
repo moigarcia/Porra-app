@@ -43,6 +43,7 @@ const authenticate = () => {
       return JSON.stringify(responseJson);
     })
     .catch(error => {
+      console.log("error por authservice")
       throw error;
     });
 };

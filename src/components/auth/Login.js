@@ -10,13 +10,7 @@ const Login = () => {
 
     authService
       .authenticate()
-      .then(responseJson => {
-        console.log("responsejson ", responseJson)
-        setCurrentUser(responseJson);
-      })
-      .catch(error => {
-        setCurrentUser(error);
-      });
+      
   }, []);
 
   const signIn = () =>
