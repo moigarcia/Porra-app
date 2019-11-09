@@ -35,7 +35,6 @@ const Login = () => {
       console.log("entra handlesubmit")
       event.preventDefault();
       try {
-       await authService.authenticate();
         const response = await authService.authenticate();
           console.log("response ", response)
           setCurrentUser(JSON.parse(response));
