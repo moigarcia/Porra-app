@@ -22,7 +22,7 @@ const Login = () => {
     //   })
     authService.authenticate()
       .then(responseJson => {
-        setCurrentUser(responseJson.user);
+        setCurrentUser(responseJson);
       })
       .catch(error => {
        throw error
