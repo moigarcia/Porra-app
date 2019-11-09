@@ -22,7 +22,7 @@ let userLocal = localStorage.getItem(constants.CURRENT_USER_KEY);
 const authenticate = async () => {
   try {
     
-    const response = await http.get('/twitter');
+    const response = await http.get('/auth/twitter');
     console.log(response)
     if (response) {
       userLocal = await JSON.stringify(response);

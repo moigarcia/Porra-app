@@ -6,29 +6,29 @@ import { authService } from '../../services/index';
 const Login = () => {
   const { currentUser, setCurrentUser } = useContext(AuthContext);
 
-  useEffect(() => {
-    fetch("https://porra-api.herokuapp.com/auth/login/success", {
-      method: "GET",
-      credentials: "include",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Credentials": true
-      }
-    })
-      .then(response => {
-        if (response.status === 200) return response.json();
-        throw new Error("failed to authenticate user");
-      })
-      .then(responseJson => {
-        setCurrentUser({
-          authenticated: true,
-          user: responseJson.user
-        });
-      })
+  // useEffect(() => {
+  //   fetch("https://porra-api.herokuapp.com/auth/login/success", {
+  //     method: "GET",
+  //     credentials: "include",
+  //     headers: {
+  //       Accept: "application/json",
+  //       "Content-Type": "application/json",
+  //       "Access-Control-Allow-Credentials": true
+  //     }
+  //   })
+  //     .then(response => {
+  //       if (response.status === 200) return response.json();
+  //       throw new Error("failed to authenticate user");
+  //     })
+  //     .then(responseJson => {
+  //       setCurrentUser({
+  //         authenticated: true,
+  //         user: responseJson.user
+  //       });
+  //     })
       
     
-  }, [])
+  // }, [])
 
   const handleSubmit = useCallback(
     async event => {
