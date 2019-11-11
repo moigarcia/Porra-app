@@ -4,6 +4,7 @@ import Login from './components/auth/Login'
 import PrivateRoute from './guards/privateRoute';
 import './App.css';
 import Home from './components/home/Home';
+import Bet from './components/bets/Bet';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Switch>
         <Route exact path="/" component={Login} />
         <Route exact path="/home" component={Home} />
+        <Route exact path="/bets" component={Bet} />
       </Switch>
     </div>
   );

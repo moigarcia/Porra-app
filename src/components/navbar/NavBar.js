@@ -1,38 +1,39 @@
-import React, { useContext} from "react";
-import { AuthContext } from "../../contexts/authContext";
-import { authService } from "../../services/index";
+import React from "react";
 
-const NavBar = () => {
-  const { currentUser } = useContext(AuthContext);
-
-  const logOut = () => authService.logOut()
-
-
+const NavBar = ({currentUser, logOut}) => {
+  
   return (
     <div>
-     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Jornada</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
+     <nav className="navbar navbar-expand-lg navbar-dark bg-success">
+        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span className="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-          <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link" href="#">Clasificación</a>
+        {/* <img src="/escudo_litris.png" width="50" height="50" className="d-inline-block align-top" alt=""/> */}
+
+        <div className="collapse navbar-collapse ml-2" id="navbarNavDropdown">
+          <ul className="navbar-nav">
+            <li className="nav-item">
+              <a className="nav-link active" href="/home">Jornada</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Mis porras</a>
+            <li className="nav-item">
+              <a className="nav-link" href="/clasificacion">Clasificación</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">{currentUser.photo}</a>
-            </li>
-            <li class="nav-item">
-              <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-            </li>
+            {currentUser && currentUser.role === 'admin' ? 
+              <li className="nav-item">
+              <a className="nav-link active" href="/admin">Admin</a>
+              </li>
+              : null
+            }
           </ul>
         </div>
+        
+        <a className="nav-item text-white" href="/perfil">
+        <img src={currentUser && currentUser.photo} className="rounded-circle"/>
+           <span className="ml-2">@{currentUser && currentUser.userTwitter}</span>
+          </a>
+        <button className="btn-success" onClick={logOut}>
+          <i className="fas fa-sign-out-alt"></i>
+        </button>
       </nav>
     </div>
   );
