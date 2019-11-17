@@ -8,8 +8,6 @@ const NavBar = ({currentUser, logOut}) => {
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
-        {/* <img src="/escudo_litris.png" width="50" height="50" className="d-inline-block align-top" alt=""/> */}
-
         <div className="collapse navbar-collapse ml-2" id="navbarNavDropdown">
           <ul className="navbar-nav">
             <li className="nav-item">
@@ -31,7 +29,7 @@ const NavBar = ({currentUser, logOut}) => {
         <img src={currentUser && currentUser.photo} className="rounded-circle"/>
            <span className="ml-2">@{currentUser && currentUser.userTwitter}</span>
           </a>
-        <button className="btn-success" onClick={logOut}>
+        <button className="btn btn-success" onClick={logOut}>
           <i className="fas fa-sign-out-alt"></i>
         </button>
       </nav>
