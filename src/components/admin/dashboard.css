@@ -1,0 +1,15 @@
+@media only screen and (min-device-width: 320px) and (max-device-width: 358px) {
+  .form-result {
+    width: 75px !important;
+  }
+  .card-body {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important
+  }
+  .shield {
+    margin-right: 2px !important
+  }
+}
+.shield {
+  margin-right: 7px
+}

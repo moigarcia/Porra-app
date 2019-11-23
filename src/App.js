@@ -5,14 +5,16 @@ import PrivateRoute from './guards/privateRoute';
 import './App.css';
 import Home from './components/home/Home';
 import Bet from './components/bets/Bet';
+import Dashboard from './components/admin/Dashboard';
 
 function App() {
   return (
     <div className="App">
       <Switch>
         <Route exact path="/" component={Login} />
-        <Route exact path="/home" component={Home} />
-        <Route exact path="/bets" component={Bet} />
+        <PrivateRoute exact path="/home" component={Home} />
+        <PrivateRoute exact path="/bets" component={Bet} />
+        <PrivateRoute exact path="/dashboard" component={Dashboard} />
       </Switch>
     </div>
   );

@@ -1,6 +1,6 @@
 import React from "react";
-
-const NavBar = ({currentUser, logOut}) => {
+import { Link } from "react-router-dom";
+const NavBar = ({currentUser, logOut, day}) => {
   
   return (
     <div>
@@ -18,7 +18,18 @@ const NavBar = ({currentUser, logOut}) => {
             </li>
             {currentUser && currentUser.role === 'admin' ? 
               <li className="nav-item">
-              <a className="nav-link active" href="/admin">Admin</a>
+                <Link
+                  to={{
+                    pathname: "/dashboard",
+                    state: {
+                      betDay: day,
+                      currentUserId: currentUser && currentUser.id
+                    }
+                  }}
+                >
+                  Admin
+                </Link>
+              
               </li>
               : null
             }
@@ -26,7 +37,7 @@ const NavBar = ({currentUser, logOut}) => {
         </div>
         
         <a className="nav-item text-white" href="/perfil">
-        <img src={currentUser && currentUser.photo} className="rounded-circle"/>
+        <img src={currentUser && currentUser.photo} className="rounded-circle" alt="perfil"/>
            <span className="ml-2">@{currentUser && currentUser.userTwitter}</span>
           </a>
         <button className="btn btn-success" onClick={logOut}>

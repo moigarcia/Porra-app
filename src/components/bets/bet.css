@@ -1,5 +1,20 @@
 .form-result {
-  width: 30% !important;
+  width: 75px !important;
   display: inline !important;
   float: right;
+  align-items: center;
+  margin-left: 2px !important
+}
+.shield {
+  margin-right: 7px
+}
+@media only screen and (min-device-width: 320px) and (max-device-width: 368px) {
+  
+  .card-body {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important
+  }
+  .shield {
+    margin-right: 2px !important
+  }
 }

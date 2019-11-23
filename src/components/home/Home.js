@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Redirect, Link } from "react-router-dom";
+import { withRouter } from "react-router";
 import { AuthContext } from "../../contexts/authContext";
 import { authService, dayService } from "../../services/index";
 import NavBar from "../navbar/NavBar";
@@ -23,41 +24,46 @@ const Home = () => {
 
   const logOut = () => {
     authService.logOut();
-    setCurrentUser()
+    setCurrentUser(false)
   };
   if(!currentUser){
     return <Redirect to="/" />
   }
-
+ 
   return (
     <div id="cms-box">
-      <NavBar logOut={logOut} currentUser={currentUser} />
+      <NavBar logOut={logOut} currentUser={currentUser} day={day}/>
       <div className="container">
         <img src="/escudo_litris.png" className="shield" alt="" />
         <div className="jumbotron">
           <h1 className="display-8">Hola {currentUser && currentUser.name}!</h1>
           <p className="lead">Bienvenido a la porra de Los Litris</p>
-          <div className="card card-day">
-            <div className="card-body">
-              <h4>
+          {day ? 
+           (<div className="">
+          <div className="card card-day ">
+            <div className="card-body d-flex justify-content-center align-items-center">
                 <img
-                  src="/escudos/aranjuez.jpg"
+                  src={day && day.shieldLocal}
                   className="shield small mr-2"
+                  alt="escudo1"
                 />
-                {day && day[0].localTeam}
-              </h4>
+              <span>
+                {day && day.localTeam}
+              </span>
             </div>
-            <div className="card-body">
-              <h4>
+            <div className="card-body d-flex justify-content-center align-items-center">
                 <img
-                  src="/escudos/vicalvaro.jpg"
+                  src={day && day.shieldVisiting}
                   className="shield small mr-2"
+                  alt="escudo2"
                 />
-                {day && day[0].visitingTeam}
-              </h4>
+              <span>
+                {day && day.visitingTeam}
+              </span>
             </div>
           </div>
-          <Link
+         
+              <Link
             to={{
               pathname: "/bets",
               state: {
@@ -66,12 +72,29 @@ const Home = () => {
               }
             }}
           >
-            <button className="btn btn-success mt-2">apostar</button>
+            <button className="btn btn-outline-success mt-2">apuesta</button>
           </Link>
+          </div>)
+          : <p className="lead">Todavía no está abierta la jornada</p>
+          }
+          {!day && currentUser.role === 'admin' && 
+          <div>
+             <Link
+             to={{
+               pathname: "/dashboard",
+               state: {
+                 currentUserId: currentUser && currentUser.id
+               }
+             }}
+           >
+             <button className="btn btn-success mt-2">crear jornada</button>
+           </Link>
+           </div>
+        }
         </div>
       </div>
     </div>
   );
 };
 
-export default Home;
+export default withRouter(Home);
