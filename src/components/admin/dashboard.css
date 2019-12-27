@@ -1,3 +1,7 @@
+.box-dashboard {
+  height: 100vh;
+}
+
 @media only screen and (min-device-width: 320px) and (max-device-width: 358px) {
   .form-result {
     width: 75px !important;
@@ -10,6 +14,12 @@
     margin-right: 2px !important
   }
 }
-.shield {
+.box-dashboard .shield {
   margin-right: 7px
+}
+.box-dashboard .card-day .shield{
+  width: 60%
+}
+.box-dashboard .card-day span{
+  font-size: 1.25rem
 }

@@ -5,7 +5,7 @@ import { AuthContext } from "../../contexts/authContext";
 import { authService, dayService } from "../../services/index";
 import NavBar from "../navbar/NavBar";
 import { constants } from "../../utils/constants/index";
-import './dashboard.css'
+import "./dashboard.css";
 import ModalDone from "../modals/ModalDone";
 
 const Dashboard = props => {
@@ -18,12 +18,16 @@ const Dashboard = props => {
   const [quantity, setQuantity] = useState({ localTeam: 0, visitingTeam: 0 });
   const [dayTeams, setDayTeams] = useState({ localTeam: "", visitingTeam: "" });
   const [scorers, setScorers] = useState("");
+  const [ confirm, setConfirm ] = useState(false);
 
   useEffect(() => {
     if (props.location.state.betDay) {
       setDay(props.location.state.betDay);
       setScorers(props.location.state.betDay.scorers);
-      setQuantity({ localTeam: props.location.state.betDay.resultLocalTeam, visitingTeam: props.location.state.betDay.resultVisitingTeam })
+      setQuantity({
+        localTeam: props.location.state.betDay.resultLocalTeam,
+        visitingTeam: props.location.state.betDay.resultVisitingTeam
+      });
     } else {
       setNewDay(true);
     }
@@ -33,7 +37,6 @@ const Dashboard = props => {
     authService.logOut();
     setCurrentUser(null);
   };
- 
 
   const updateDaySubmit = async event => {
     event.preventDefault();
@@ -42,7 +45,7 @@ const Dashboard = props => {
       resultVisitingTeam: quantity.visitingTeam,
       scorers: scorers
     };
-   
+
     try {
       if (
         (day.visitingTeam === "C.D. Vicálvaro" &&
@@ -118,18 +121,29 @@ const Dashboard = props => {
   const closeSubmit = async event => {
     event.preventDefault();
     try {
+      setConfirm(false)
       await dayService.closeDaySubmit(day.id);
       await setUpdateDone(true);
       window.$("#modalBet").modal("show");
       setNotify({
         code: "closeDay",
-        message: "Se cierra la jornada!!!",
+        message: "Se ha cerrado la jornada!!!",
         state: true
       });
     } catch (error) {
       console.log(error);
     }
   };
+  const confirmSubmit = async () => {
+    setConfirm(true)
+    await setUpdateDone(true);
+    window.$("#modalBet").modal("show");
+      setNotify({
+        code: "closeDay",
+        message: "¿Estas seguro que quieres cerrar la jornada?",
+        state: true
+      });
+  }
 
   const hideModal = () => {
     if (notify.code === "closeDay") {
@@ -148,8 +162,8 @@ const Dashboard = props => {
     setQuantity({
       ...quantity,
       [name]: parseInt(e.target.value, 10)
-    })
-    if(name === "C.D.Vicálvaro"){
+    });
+    if (name === "C.D.Vicálvaro") {
       setScorers([]);
     }
   };
@@ -164,7 +178,8 @@ const Dashboard = props => {
     if (
       (day.visitingTeam === "C.D. Vicálvaro" &&
         quantity.visitingTeam > scorers.length) ||
-      (day.localTeam === "C.D. Vicálvaro" && quantity.localTeam > scorers.length)
+      (day.localTeam === "C.D. Vicálvaro" &&
+        quantity.localTeam > scorers.length)
     ) {
       setScorers([...scorers, e.target.value]);
     } else {
@@ -220,18 +235,15 @@ const Dashboard = props => {
   if (backHome) {
     return <Redirect to="/home" />;
   }
-  console.log(day)
-  console.log(vicalScored);
-  console.log(scorers)
+
   return (
     <div id="cms-box">
-      <NavBar logOut={logOut} currentUser={currentUser} />
+      <NavBar logOut={logOut} currentUser={currentUser} day={day}/>
       {updateDone && (
-        <ModalDone modal={notify} closeModal={hideModal}></ModalDone>
+        <ModalDone modal={notify} closeModal={hideModal} closeSubmit={closeSubmit} confirm={confirm}></ModalDone>
       )}
-      <div className="container">
-        <img src="/escudo_litris.png" className="shield" alt="" />
-        <div className="jumbotron">
+      <div className="container box-dashboard pt-5">
+        <div className="jumbotron mt-5">
           <div className="card card-day">
             <form>
               <div className="card-body">
@@ -266,14 +278,25 @@ const Dashboard = props => {
                   )}
 
                   {day && (
-                    <div className={!pendingDay && "d-flex justify-content-around align-items-center"}>
-                      <img
-                        src={day && day.shieldLocal}
-                        className="shield small"
-                        alt="escudo1"
-                      />
-                      {day.localTeam}
-                      {!pendingDay && (
+                    <div
+                      className={
+                        !pendingDay &&
+                        "d-flex justify-content-around align-items-center"
+                      }
+                    >
+                      <div className="row align-items-center">
+                        <div className="col-3 d-flex justify-content-end">
+                          <img
+                            src={day && day.shieldLocal}
+                            className="shield  mr-2"
+                            alt="escudo1"
+                          />
+                        </div>
+                        <div className="col-6 d-flex justify-content-start p-0">
+                          <span>{day && day.localTeam}</span>
+                        </div>
+                        <div className="col-3 d-flex justify-content-start p-0">
+                        {!pendingDay && (
                         <select
                           className="form-control form-result ml-1"
                           name="localTeam"
@@ -293,6 +316,9 @@ const Dashboard = props => {
                           <option>9</option>
                         </select>
                       )}
+                        </div>
+                      </div>
+                      
                     </div>
                   )}
                 </div>
@@ -300,33 +326,47 @@ const Dashboard = props => {
               <div className="card-body">
                 <div>
                   {day && (
-                    <div className={!pendingDay && "d-flex justify-content-around align-items-center"}>
-                      <img
-                        src={day && day.shieldVisiting}
-                        className="shield small"
-                        alt="escudo2"
-                      />
-                      {day.visitingTeam}
-                      {!pendingDay && (
-                        <select
-                          className="form-control form-result"
-                          name="visitingTeam"
-                          onChange={handleChange}
-                          disabled={pendingDay}
-                          value={quantity.visitingTeam}
-                        >
-                          <option>0</option>
-                          <option>1</option>
-                          <option>2</option>
-                          <option>3</option>
-                          <option>4</option>
-                          <option>5</option>
-                          <option>6</option>
-                          <option>7</option>
-                          <option>8</option>
-                          <option>9</option>
-                        </select>
-                      )}
+                    <div
+                      className={
+                        !pendingDay &&
+                        "d-flex justify-content-around align-items-center"
+                      }
+                    >
+                      <div className="row  align-items-center">
+                        <div className="col-3 d-flex justify-content-end">
+                          <img
+                            src={day && day.shieldVisiting}
+                            className="shield  mr-2"
+                            alt="escudo2"
+                          />
+                        </div>
+                        <div className="col-6 d-flex justify-content-start p-0">
+                          <span>{day && day.visitingTeam}</span>
+                        </div>
+                        <div className="col-3 d-flex justify-content-start p-0">
+                          {!pendingDay && (
+                            <select
+                              className="form-control form-result"
+                              name="visitingTeam"
+                              onChange={handleChange}
+                              disabled={pendingDay}
+                              value={quantity.visitingTeam}
+                            >
+                              <option>0</option>
+                              <option>1</option>
+                              <option>2</option>
+                              <option>3</option>
+                              <option>4</option>
+                              <option>5</option>
+                              <option>6</option>
+                              <option>7</option>
+                              <option>8</option>
+                              <option>9</option>
+                            </select>
+                          )}
+                        </div>
+                      </div>
+                      
                     </div>
                   )}
                 </div>
@@ -334,7 +374,7 @@ const Dashboard = props => {
               {vicalScored && scorers.length > 0 && (
                 <table className="table table-striped">{scorersList}</table>
               )}
-              
+
               {vicalScored && (
                 <select
                   className="form-control selected"
@@ -361,14 +401,14 @@ const Dashboard = props => {
           )}
           {closeDay && (
             <div>
-              <button
-                className="btn btn-primary m-2"
-                onClick={updateDaySubmit}
-              >
+              <button className="btn btn-primary m-2" onClick={updateDaySubmit}>
                 actualizar resultados
               </button>
 
-              <button className="btn btn-outline-danger mt2" onClick={closeSubmit}>
+              <button
+                className="btn btn-outline-danger mt2"
+                onClick={confirmSubmit}
+              >
                 cerrar jornada
               </button>
             </div>

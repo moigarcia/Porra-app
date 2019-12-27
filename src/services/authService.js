@@ -28,15 +28,38 @@ const authenticate = () => {
       throw error;
     });
 };
+const getUserById = async (id) => { 
+  try {
+    const response = await http.get(`/users/${id}`)
+    return response.data
+  } catch(error){
+    throw error
+  }
+}
 
 const logOut = () => {
-  userLocal = {};
-  localStorage.removeItem(constants.CURRENT_USER_KEY);
-  http.get('/auth/logout')
-  return userLocal;
+  fetch("http://localhost:3001/auth/logout", {
+    method: "POST",
+    credentials: "include",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Credentials": true
+    }
+  })
+    .then(response => {
+      console.log("entra")
+      userLocal = {};
+      localStorage.removeItem(constants.CURRENT_USER_KEY);
+      return userLocal;
+    })
+    .catch(error => {
+      throw error;
+    });  
 };
 
 export default {
   authenticate,
+  getUserById,
   logOut
 };

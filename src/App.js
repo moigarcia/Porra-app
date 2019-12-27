@@ -6,6 +6,7 @@ import './App.css';
 import Home from './components/home/Home';
 import Bet from './components/bets/Bet';
 import Dashboard from './components/admin/Dashboard';
+import Classification from './components/classification/Classification';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <PrivateRoute exact path="/home" component={Home} />
         <PrivateRoute exact path="/bets" component={Bet} />
         <PrivateRoute exact path="/dashboard" component={Dashboard} />
+        <PrivateRoute exact path="/classification" component={Classification} />
       </Switch>
     </div>
   );

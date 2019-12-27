@@ -1,10 +1,91 @@
 .App {
   text-align: center;
+  background-image: url('/background-intro.jpg');
+  background-size: cover;
+  background-position: center;
+  width: 100%;
 }
-
-.small{
-  width:20% !important; 
+#cms-box {
+ height: 100%;
 }
-.red{
-  color: red
+.jumbotron {
+  margin-bottom: 2rem;
+}
+.red {
+  color:#E2001A !important;
+}
+.bg-grey{
+  background-color: #26262b
+}
+.bg-grey-light{
+  background-color: #010101
+}
+.bg-blue-light{
+  background-color: #6485e2
+}
+.bg-black{
+  background-color: #0a0a0a;
+}
+.bg-black-dark{
+  background-color: #000000;
+}
+.bg-white{
+  background-color: #ffffff;
+}
+.bg-blue{
+  background-color: #00acee !important;
+}
+.bg-transparent {
+  background-color:rgba(0, 0, 0, 0.5);
+}
+.green{
+  color: green;
+}
+.bg-purple{
+  background-color: #9a91fd;
+}
+.border-none{
+  border: none !important;
+}
+.light-purple{
+  color: rgba(154, 145, 253, 0.406)
+}
+.orange{
+  color:#ff7929;
+}
+.white{
+  color:#ffffff !important
+}
+.black{
+  color: #1e262c
+}
+.btn-transparent {
+  background-color: Transparent;
+  background-repeat:no-repeat;
+  border: none;
+  cursor:pointer;
+  overflow: hidden;
+  outline:none;
+}
+button:focus {
+  outline: 0 !important;
+  box-shadow: none !important;
+}
+.w-80 {
+  width: 80%
+}
+.w-60 {
+  width: 60%
+}
+.w-50 {
+  width: 50%
+}
+.w-40{
+  width: 40%
+}
+.w-30 {
+  width: 30%
+}
+.w-20{
+  width: 20%
 }

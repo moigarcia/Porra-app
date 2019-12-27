@@ -1,27 +1,15 @@
-#cms-box {
-  background-image: url('/background-intro.jpg');
-  background-size: cover;
-  background-position: center;
-  width: 100%;
-  height: 100vh; 
+
+.box-home {
+  padding-top: 70px;
+  height: 100vh;
 }
-.container{
-  height: 90% 
+
+.box-home .card-day .shield{
+  width: 50%
 }
-.jumbotron {
-  margin-bottom: 2rem;
-}
-.card-day{
-  width: 90%;
-  margin: 0 auto;
-}
-.card-body{
-  text-align: left;
-}
-.shield{
-  width: 40%
-}
-.card-body span{
-  font-size: 1.35rem
+.box-home .card-day span{
+  font-size: 1.25rem;
+  font-family: Helvetica Neue;
+  
 }
 

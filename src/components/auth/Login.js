@@ -2,23 +2,25 @@ import React, { useContext } from "react";
 import { Redirect } from "react-router-dom";
 import { AuthContext } from "../../contexts/authContext";
 import { authService } from "../../services/index";
+import "./login.css";
 
 const Login = () => {
   const { currentUser, setCurrentUser } = useContext(AuthContext);
 
   const signIn = async () => {
-    try{
-    const response = window.open("http://localhost:3001/auth/twitter", "_self")
-    if (response) {
-      const responseUser = await authService.authenticate()
-        setCurrentUser(responseUser)
+    try {
+      const response = window.open(
+        "http://localhost:3001/auth/twitter",
+        "_self"
+      );
+      if (response) {
+        const responseUser = await authService.authenticate();
+        setCurrentUser(responseUser);
+      }
+    } catch (error) {
+      throw error;
     }
-    } catch(error) {
-      throw error
-    }
-  }
-
-  console.log(currentUser);
+  };
 
   if (currentUser) {
     return <Redirect to="/home" />;
@@ -26,10 +28,22 @@ const Login = () => {
 
   return (
     <div id="cms-box">
-      <button onClick={signIn} className="btn btn-primary">
-        {" "}
-        Twitter{" "}
-      </button>
+      <div className="flex-container login-box align-items-center justify-content-center align-middle">
+        <div className="row row-box ">
+          <div className="box-intro">
+            <img src="/escudo_litris.png" className="shield" alt="" />
+            <h2 className="white">Porra Litris</h2>
+            <p className="white">
+              La porra del C.D.Vicálvaro, en honor a nuestro amigo David
+              Ludeña
+            </p>
+            <button onClick={signIn} className="btn bg-blue white btn-lg justify-content-center align-items-center align-middle">
+            <img src="/twitter.png" className="icon-twitter mr-2" alt="icon-twitter" />
+              <span>Twitter</span>
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

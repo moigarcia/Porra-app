@@ -1,20 +1,27 @@
-.form-result {
+.box-bets {
+  height: 100vh;
+}
+
+.box-bets .form-result {
   width: 75px !important;
   display: inline !important;
   float: right;
   align-items: center;
   margin-left: 2px !important
 }
-.shield {
+.box-bets .shield {
   margin-right: 7px
+}
+.box-bets .card-day .shield{
+  width: 50%
 }
 @media only screen and (min-device-width: 320px) and (max-device-width: 368px) {
   
-  .card-body {
+  .box-bets .card-body {
     padding-left: 1rem !important;
     padding-right: 1rem !important
   }
-  .shield {
+  .box-bets .shield {
     margin-right: 2px !important
   }
 }
