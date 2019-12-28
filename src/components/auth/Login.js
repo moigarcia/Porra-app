@@ -9,12 +9,12 @@ const Login = () => {
 
   const signIn = async () => {
     try {
-      const response = window.open(
+      const response =await window.open(
         "https://porra-api.herokuapp.com/auth/twitter",
         "_self"
       );
+      console.log("entra ",response)
       if (response) {
-        console.log("entra ",response)
         const responseUser = await authService.authenticate();
         setCurrentUser(responseUser);
       }
