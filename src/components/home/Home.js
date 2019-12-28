@@ -51,7 +51,7 @@ const Home = () => {
                   <div className="col-4 d-flex justify-content-end  p-0">
                     <img
                       src={day && day.shieldLocal}
-                      className="shield  mr-2"
+                      className="shield-home mr-2"
                       alt="escudo1"
                     />
                   </div>
@@ -63,7 +63,7 @@ const Home = () => {
                   <div className="col-4 d-flex justify-content-end p-0">
                     <img
                       src={day && day.shieldVisiting}
-                      className="shield  mr-2"
+                      className="shield-home  mr-2"
                       alt="escudo2"
                     />
                   </div>

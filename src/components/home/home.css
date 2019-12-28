@@ -4,12 +4,11 @@
   height: 100vh;
 }
 
-.box-home .card-day .shield{
+.box-home .shield-home{
   width: 50%
 }
 .box-home .card-day span{
   font-size: 1.25rem;
   font-family: Helvetica Neue;
-  
 }
 
