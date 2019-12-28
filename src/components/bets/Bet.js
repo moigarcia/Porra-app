@@ -139,7 +139,7 @@ const Bet = props => {
         </th>
         <td>{name}</td>
         <td>
-          <button onClick={() => deleteScorer(name)}>
+          <button className="btn-transparent" onClick={() => deleteScorer(name)}>
             <i className="fas fa-user-times red" />
           </button>
         </td>
@@ -174,8 +174,7 @@ const Bet = props => {
       {betDone && <ModalDone modal={notify} closeModal={hideModal}></ModalDone>}
       {day && day.stateDay !== "pending" && (
         <div className="container box-bets pt-5">
-          <div className="jumbotron mt-5">
-            {/* <div className="card card-day"> */}
+          <div className="jumbotron mt-5 bg-white">
               {bet && <h6 className="mt-2">Ya realizaste tu apuesta</h6>}
               <form>
                 <div className="card-body">
@@ -281,7 +280,6 @@ const Bet = props => {
                 apostar
               </button>
             )}
-          {/* </div> */}
         </div>
       )}
       { day && day.stateDay === "pending" && (
