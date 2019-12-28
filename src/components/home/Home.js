@@ -3,7 +3,7 @@ import { Redirect, Link } from "react-router-dom";
 import { withRouter } from "react-router";
 import { AuthContext } from "../../contexts/authContext";
 import { authService, dayService } from "../../services/index";
-import NavBar from "../navbar/NavBar";
+import Menu from "../menu/Menu";
 import "./home.css";
 
 const Home = () => {
@@ -34,7 +34,7 @@ const Home = () => {
 
   return (
     <div id="cms-box">
-      <NavBar logOut={logOut} currentUser={currentUser} day={day} />
+      <Menu logOut={logOut} currentUser={currentUser} day={day} />
       <div className="container box-home">
         <div className="jumbotron mt-5">
           <h1 className="display-8">Hola {currentUser && currentUser.name}!</h1>

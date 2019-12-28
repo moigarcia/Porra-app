@@ -28,9 +28,9 @@ const Login = () => {
 
   return (
     <div id="cms-box">
-      <div className="flex-container login-box align-items-center justify-content-center align-middle">
-        <div className="row row-box ">
-          <div className="box-intro">
+      <div className="flex-container login-box align-items-center align-middle">
+        <div className="row row-box justify-content-center">
+          <div className="box-intro ">
             <img src="/escudo_litris.png" className="shield" alt="" />
             <h2 className="white">Porra Litris</h2>
             <p className="white">

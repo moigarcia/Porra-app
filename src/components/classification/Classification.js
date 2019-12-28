@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect } from "react";
 import { withRouter } from "react-router";
 import { AuthContext } from "../../contexts/authContext";
 import { authService, dayService } from "../../services/index";
-import NavBar from "../navbar/NavBar";
+import Menu from "../menu/Menu";
 import './Classification.css'
 
 
@@ -24,7 +24,7 @@ const Classification = props => {
  
   return (
     <div id="cms-box">
-      <NavBar logOut={logOut} currentUser={currentUser} day={props.location.state.betDay}/>
+      <Menu logOut={logOut} currentUser={currentUser} day={props.location.state.betDay}/>
       <div className="container box-table pt-5 pb-5 d-flex justify-content-center">
       <table className="mt-5 table mb-5 white ">
         <thead className="thead-dark">

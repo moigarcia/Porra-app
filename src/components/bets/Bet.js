@@ -3,7 +3,7 @@ import { Redirect } from "react-router-dom";
 import { withRouter } from "react-router";
 import { AuthContext } from "../../contexts/authContext";
 import { authService, betService } from "../../services/index";
-import NavBar from "../navbar/NavBar";
+import Menu from "../menu/Menu";
 import { constants } from "../../utils/constants/index";
 import "./bet.css";
 import ModalDone from "../modals/ModalDone";
@@ -167,9 +167,10 @@ const Bet = props => {
   if (backHome) {
     return <Redirect to="/home" />;
   }
+  console.log(day);
   return (
     <div id="cms-box">
-      <NavBar logOut={logOut} currentUser={currentUser} day={day} />
+      <Menu logOut={logOut} currentUser={currentUser} day={day} />
       {betDone && <ModalDone modal={notify} closeModal={hideModal}></ModalDone>}
       {day && day.stateDay !== "pending" && (
         <div className="container box-bets pt-5">

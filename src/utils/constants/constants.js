@@ -1,4 +1,5 @@
 const CURRENT_USER_KEY = "current-user";
+const SCREENWEB = window.innerWidth > 600;
 const PLAYERS = [
   { id: 1, name: "koke" },
   { id: 2, name: "chino" },
@@ -99,5 +100,6 @@ const TEAMS = [
 export default {
   CURRENT_USER_KEY,
   PLAYERS,
-  TEAMS
+  TEAMS,
+  SCREENWEB
 };

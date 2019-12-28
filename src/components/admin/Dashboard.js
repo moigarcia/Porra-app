@@ -3,7 +3,7 @@ import { Redirect } from "react-router-dom";
 import { withRouter } from "react-router";
 import { AuthContext } from "../../contexts/authContext";
 import { authService, dayService } from "../../services/index";
-import NavBar from "../navbar/NavBar";
+import Menu from "../menu/Menu";
 import { constants } from "../../utils/constants/index";
 import "./dashboard.css";
 import ModalDone from "../modals/ModalDone";
@@ -238,7 +238,7 @@ const Dashboard = props => {
 
   return (
     <div id="cms-box">
-      <NavBar logOut={logOut} currentUser={currentUser} day={day}/>
+      <Menu logOut={logOut} currentUser={currentUser} day={day}/>
       {updateDone && (
         <ModalDone modal={notify} closeModal={hideModal} closeSubmit={closeSubmit} confirm={confirm}></ModalDone>
       )}

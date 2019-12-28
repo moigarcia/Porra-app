@@ -4,7 +4,7 @@ import axios from 'axios';
 // const { API_URL } = 'https://porra-api.herokuapp.com';
 //const  API_URL  =  'https://porra-api.herokuapp.com';
 const http = axios.create({
-  baseURL: 'https://porra-api.herokuapp.com',
+  baseURL: 'http://localhost:3001',
   withCredentials: true
   // baseURL: 'https://porra-api.herokuapp.com'
 });
