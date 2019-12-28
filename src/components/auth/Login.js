@@ -13,7 +13,6 @@ const Login = () => {
         "https://porra-api.herokuapp.com/auth/twitter",
         "_self"
       );
-      console.log("entra ",response)
       if (response) {
         const responseUser = await authService.authenticate();
         setCurrentUser(responseUser);
