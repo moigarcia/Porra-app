@@ -3,43 +3,39 @@ import { constants } from "../utils/constants";
 
 let userLocal = localStorage.getItem(constants.CURRENT_USER_KEY);
 
-const authenticate = async () => {
-  try {
-    const response = await fetch(
-      "https://porra-api.herokuapp.com/auth/login/success",
-      {
-        method: "GET",
-        credentials: "include",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          "Access-Control-Allow-Credentials": true
-        }
-      }
-    );
-
-    if (response.status === 200) {
-      const responseJson = response.json();
+const authenticate = () => {
+  fetch("https://porra-api.herokuapp.com/auth/login/success", {
+    method: "GET",
+    credentials: "include",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+      "Access-Control-Allow-Credentials": true
+    }
+  })
+    .then(response => {
+      if (response.status === 200) return response.json();
+      throw new Error("failed to authenticate user");
+    })
+    .then(responseJson => {
       localStorage.setItem(
         constants.CURRENT_USER_KEY,
         JSON.stringify(responseJson)
       );
       return JSON.stringify(responseJson);
-    } else {
-      throw new Error("failed to authenticate user");
-    }
-  } catch (error) {
-    throw error;
-  }
+    })
+    .catch(error => {
+      throw error;
+    });
 };
-const getUserById = async id => {
+const getUserById = async (id) => { 
   try {
-    const response = await http.get(`/users/${id}`);
-    return response.data;
-  } catch (error) {
-    throw error;
+    const response = await http.get(`/users/${id}`)
+    return response.data
+  } catch(error){
+    throw error
   }
-};
+}
 
 const logOut = () => {
   fetch("https://porra-api.herokuapp.com/auth/logout", {
@@ -52,14 +48,14 @@ const logOut = () => {
     }
   })
     .then(response => {
-      console.log("entra");
+      console.log("entra")
       userLocal = {};
       localStorage.removeItem(constants.CURRENT_USER_KEY);
       return userLocal;
     })
     .catch(error => {
       throw error;
-    });
+    });  
 };
 
 export default {
