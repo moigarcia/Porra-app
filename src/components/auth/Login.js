@@ -14,6 +14,7 @@ const Login = () => {
         "_self"
       );
       if (response) {
+        console.log("entra ",response)
         const responseUser = await authService.authenticate();
         setCurrentUser(responseUser);
       }
