@@ -6,7 +6,7 @@
   width: 100%;
 }
 #cms-box {
- width: 100vh;
+ height: 100vh;
  text-align: center;
   background-image: url('/background-intro.jpg');
   background-size: cover;

@@ -176,7 +176,7 @@ const Bet = props => {
       <Menu logOut={logOut} currentUser={currentUser} day={day} />
       {betDone && <ModalDone modal={notify} closeModal={hideModal}></ModalDone>}
       {day && day.stateDay !== "pending" && (
-        <div className="container box-bets pt-5">
+        <div className="container box-bets pt-5 pb-5 d-flex justify-content-center">
           <div className="jumbotron mt-5 bg-white">
             {bet && <h6 className="mt-2">Ya realizaste tu apuesta</h6>}
             <form>
