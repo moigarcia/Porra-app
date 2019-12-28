@@ -10,7 +10,8 @@ const Login = () => {
   const signIn = async () => {
     try {
       const response =await window.open(
-        "https://porra-api.herokuapp.com/auth/twitter",
+        "http://localhost:3001/auth/twitter",
+        // "https://porra-api.herokuapp.com/auth/twitter",
         "_system"
       );
       console.log("response ", response)

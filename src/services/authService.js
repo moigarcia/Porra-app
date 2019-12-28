@@ -4,7 +4,7 @@ import { constants } from "../utils/constants";
 let userLocal = localStorage.getItem(constants.CURRENT_USER_KEY);
 
 const authenticate = () => {
-  fetch("https://porra-api.herokuapp.com/auth/login/success", {
+  fetch("http://localhost:3001/auth/login/success", {
     method: "GET",
     credentials: "include",
     headers: {
@@ -38,7 +38,8 @@ const getUserById = async (id) => {
 }
 
 const logOut = () => {
-  fetch("https://porra-api.herokuapp.com/auth/logout", {
+  // fetch("https://porra-api.herokuapp.com/auth/logout", {
+  fetch("http://localhost:3001/auth/logout", {
     method: "POST",
     credentials: "include",
     headers: {
