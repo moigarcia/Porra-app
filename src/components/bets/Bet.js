@@ -139,7 +139,10 @@ const Bet = props => {
         </th>
         <td>{name}</td>
         <td>
-          <button className="btn-transparent" onClick={() => deleteScorer(name)}>
+          <button
+            className="btn-transparent"
+            onClick={() => deleteScorer(name)}
+          >
             <i className="fas fa-user-times red" />
           </button>
         </td>
@@ -175,124 +178,126 @@ const Bet = props => {
       {day && day.stateDay !== "pending" && (
         <div className="container box-bets pt-5">
           <div className="jumbotron mt-5 bg-white">
-              {bet && <h6 className="mt-2">Ya realizaste tu apuesta</h6>}
-              <form>
-                <div className="card-body">
-                  <div className="d-flex justify-content-around align-items-center">
-                    <div className="row align-items-center">
-                      <div className="col-3 d-flex justify-content-end p-0">
-                        <img
-                          src={day && day.shieldLocal}
-                          className="shield  mr-2"
-                          alt="escudo1"
-                        />
-                      </div>
-                      <div className="col-6 d-flex justify-content-start p-0">
-                        <span>{day && day.localTeam}</span>
-                      </div>
-                      <div className="col-3 d-flex justify-content-center p-0">
-                        <select
-                          type="number"
-                          className="form-control form-result "
-                          value={bet.resultLocalTeam}
-                          name="localTeam"
-                          id="localTeam"
-                          onChange={handleChange}
-                          disabled={bet}
-                        >
-                          <option>0</option>
-                          <option>1</option>
-                          <option>2</option>
-                          <option>3</option>
-                          <option>4</option>
-                          <option>5</option>
-                          <option>6</option>
-                          <option>7</option>
-                          <option>8</option>
-                          <option>9</option>
-                        </select>
-                      </div>
+            {bet && <h6 className="mt-2">Ya realizaste tu apuesta</h6>}
+            <form>
+              <div className="card-body">
+                <div className="d-flex justify-content-around align-items-center">
+                  <div className="row align-items-center">
+                    <div className="col-3 d-flex justify-content-end p-0">
+                      <img
+                        src={day && day.shieldLocal}
+                        className="shield  mr-2"
+                        alt="escudo1"
+                      />
+                    </div>
+                    <div className="col-6 d-flex justify-content-start p-0">
+                      <span>{day && day.localTeam}</span>
+                    </div>
+                    <div className="col-3 d-flex justify-content-center p-0">
+                      <select
+                        type="number"
+                        className="form-control form-result "
+                        value={bet.resultLocalTeam}
+                        name="localTeam"
+                        id="localTeam"
+                        onChange={handleChange}
+                        disabled={bet}
+                      >
+                        <option>0</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                        <option>9</option>
+                      </select>
                     </div>
                   </div>
                 </div>
-                <div className="card-body">
-                  <div className="d-flex justify-content-around align-items-center">
-                    <div className="row  align-items-center">
-                      <div className="col-3 d-flex justify-content-end p-0">
-                        <img
-                          src={day && day.shieldVisiting}
-                          className="shield  mr-2"
-                          alt="escudo2"
-                        />
-                      </div>
-                      <div className="col-6 d-flex justify-content-start p-0">
-                        <span>{day && day.visitingTeam}</span>
-                      </div>
-                      <div className="col-3 d-flex justify-content-center p-0">
-                        <select
-                          type="number"
-                          className="form-control form-result"
-                          value={bet.resultVisitingTeam}
-                          name="visitingTeam"
-                          id="visitingTeam"
-                          onChange={handleChange}
-                          disabled={bet}
-                        >
-                          <option>0</option>
-                          <option>1</option>
-                          <option>2</option>
-                          <option>3</option>
-                          <option>4</option>
-                          <option>5</option>
-                          <option>6</option>
-                          <option>7</option>
-                          <option>8</option>
-                          <option>9</option>
-                        </select>
-                      </div>
+              </div>
+              <div className="card-body">
+                <div className="d-flex justify-content-around align-items-center">
+                  <div className="row  align-items-center">
+                    <div className="col-3 d-flex justify-content-end p-0">
+                      <img
+                        src={day && day.shieldVisiting}
+                        className="shield  mr-2"
+                        alt="escudo2"
+                      />
+                    </div>
+                    <div className="col-6 d-flex justify-content-start p-0">
+                      <span>{day && day.visitingTeam}</span>
+                    </div>
+                    <div className="col-3 d-flex justify-content-center p-0">
+                      <select
+                        type="number"
+                        className="form-control form-result"
+                        value={bet.resultVisitingTeam}
+                        name="visitingTeam"
+                        id="visitingTeam"
+                        onChange={handleChange}
+                        disabled={bet}
+                      >
+                        <option>0</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                        <option>9</option>
+                      </select>
                     </div>
                   </div>
                 </div>
-                {bet && bet.scorers[0] !== "" && (
-                  <table className="table table-striped prueba">
-                    {scorersBetList}
-                  </table>
-                )}
-                {!bet && vicalScored && scorers.length > 0 && (
-                  <table className="table table-striped">{scorersList}</table>
-                )}
-                {!bet && vicalScored && (
-                  <select
-                    className="form-control selected"
-                    value="Goleadores"
-                    id="scorers"
-                    placeholder="First name"
-                    onChange={handleChangeScorers}
-                  >
-                    <option disabled>Goleadores</option>
-                    {players}
-                  </select>
-                )}
-              </form>
-            </div>
-            {!bet && (
-              <button className="btn btn-success mt-2" onClick={betSubmit}>
-                apostar
-              </button>
-            )}
-        </div>
-      )}
-      { day && day.stateDay === "pending" && (
-        <div className="container box-bets pt-5">
-          <div className="jumbotron mt-5">
-          <p className="lead">La jornada está cerrada no se admiten más resultados</p>
+              </div>
+              {bet && bet.scorers[0] !== "" && (
+                <table className="table table-striped prueba">
+                  {scorersBetList}
+                </table>
+              )}
+              {!bet && vicalScored && scorers.length > 0 && (
+                <table className="table table-striped">{scorersList}</table>
+              )}
+              {!bet && vicalScored && (
+                <select
+                  className="form-control selected"
+                  value="Goleadores"
+                  id="scorers"
+                  placeholder="First name"
+                  onChange={handleChangeScorers}
+                >
+                  <option disabled>Goleadores</option>
+                  {players}
+                </select>
+              )}
+              {!bet && (
+                <button className="btn btn-success mt-2" onClick={betSubmit}>
+                  apostar
+                </button>
+              )}
+            </form>
           </div>
         </div>
       )}
-      { !day && (
+      {day && day.stateDay === "pending" && (
         <div className="container box-bets pt-5">
           <div className="jumbotron mt-5">
-          <p className="lead">Todavía no está abierta la jornada</p>
+            <p className="lead">
+              La jornada está cerrada no se admiten más resultados
+            </p>
+          </div>
+        </div>
+      )}
+      {!day && (
+        <div className="container box-bets pt-5">
+          <div className="jumbotron mt-5">
+            <p className="lead">Todavía no está abierta la jornada</p>
           </div>
         </div>
       )}
