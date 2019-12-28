@@ -11,8 +11,9 @@ const Login = () => {
     try {
       const response =await window.open(
         "https://porra-api.herokuapp.com/auth/twitter",
-        "_self"
+        "_system"
       );
+      console.log("response ", response)
       if (response) {
         const responseUser = await authService.authenticate();
         setCurrentUser(responseUser);
