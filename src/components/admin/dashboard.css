@@ -18,7 +18,8 @@
   margin-right: 7px
 }
 .box-dashboard .card-day .shield{
-  width: 60%
+  width: 50%;
+  height: 50%;
 }
 .box-dashboard .card-day span{
   font-size: 1.25rem
