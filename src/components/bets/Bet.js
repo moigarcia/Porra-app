@@ -172,12 +172,12 @@ const Bet = props => {
   }
   console.log(day);
   return (
-    <div id="cms-box">
+    <div id="cms-box" className="">
       <Menu logOut={logOut} currentUser={currentUser} day={day} />
       {betDone && <ModalDone modal={notify} closeModal={hideModal}></ModalDone>}
       {day && day.stateDay !== "pending" && (
-        <div className="container box-bets pt-5 pb-5 d-flex justify-content-center">
-          <div className="jumbotron mt-5 bg-white">
+        <div className="container box-bets pt-5 pb-5 ">
+          <div className="jumbotron mt-5 mb-5 bg-white">
             {bet && <h6 className="mt-2">Ya realizaste tu apuesta</h6>}
             <form>
               <div className="card-body">

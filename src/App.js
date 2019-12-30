@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import Login from './components/auth/Login'
 import PrivateRoute from './guards/privateRoute';
 import './App.css';
@@ -13,6 +13,17 @@ function App() {
     <div className="App">
       <Switch>
         <Route exact path="/" component={Login} />
+        <Route
+        path="/twitter/success"
+        render={() => (
+          <Redirect
+            to={{
+              pathname: '/',
+              state: { loadUser: true },
+            }}
+          />
+        )}
+      />
         <PrivateRoute exact path="/home" component={Home} />
         <PrivateRoute exact path="/bets" component={Bet} />
         <PrivateRoute exact path="/dashboard" component={Dashboard} />

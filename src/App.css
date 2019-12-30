@@ -1,20 +1,19 @@
 .App {
   text-align: center;
-  background-image: url('/background-intro.jpg');
+  height: 100%;
+}
+ #cms-box {
+  height: auto;
+  background-image: url(/background-intro.jpg);
   background-size: cover;
   background-position: center;
+  background-repeat: no-repeat;
   width: 100%;
-}
-#cms-box {
- height: 100vh;
- text-align: center;
-  background-image: url('/background-intro.jpg');
-  background-size: cover;
-  background-position: center;
-  width: 100%;
-}
+  min-height: 100vh;
+} 
 .jumbotron {
   margin-bottom: 2rem;
+  border: 2px solid grey
 }
 .red {
   color:#E2001A !important;

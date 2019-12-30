@@ -64,7 +64,7 @@ const Menu = ({ currentUser, logOut, day }) => {
               </div>
               <div className="sidebar-header">
                 <img
-                  src={currentUser && currentUser.photo}
+                  src={currentUser ? currentUser.photo : null}
                   className="rounded-circle"
                   alt="perfil"
                 />

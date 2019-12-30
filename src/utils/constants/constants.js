@@ -1,4 +1,5 @@
 const CURRENT_USER_KEY = "current-user";
+const URL_AUTH = "https://porra-api.herokuapp.com/auth/twitter"
 const SCREENWEB = window.innerWidth > 600;
 const PLAYERS = [
   { id: 1, name: "koke" },
@@ -101,5 +102,6 @@ export default {
   CURRENT_USER_KEY,
   PLAYERS,
   TEAMS,
+  URL_AUTH,
   SCREENWEB
 };

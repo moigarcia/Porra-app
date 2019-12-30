@@ -1,7 +1,6 @@
 .box-bets {
-  /* height: 100%; */
+  height: auto;
 }
-
 .box-bets .form-result {
   width: 75px !important;
   display: inline !important;
