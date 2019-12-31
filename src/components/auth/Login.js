@@ -17,7 +17,7 @@ const Login = props => {
     if (props.location.state && props.location.state.loadUser) {
       console.log("entra loadUser");
       const fetchAuth = async () => {
-        const response = await http.get("/auth/login/success");
+        const response = await http.get("/auth/login/success", { crossdomain: true });
         if(response) {
           localStorage.setItem(
             constants.CURRENT_USER_KEY,
