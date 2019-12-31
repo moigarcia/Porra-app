@@ -35,8 +35,7 @@ const Login = props => {
             message: "Se ha producido un error en acceso con Twitter",
             state: true
           });
-        }
-        
+        }) 
       };
       fetchAuth();
     }
