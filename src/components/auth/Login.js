@@ -16,6 +16,7 @@ const Login = props => {
   useEffect(() => {
     if (props.location.state && props.location.state.loadUser) {
       setTimeout(() => {
+        console.log('entra timeout')
         http.get("/auth/login/success", { headers: {'Access-Control-Allow-Origin': '*' }  })      
          .then(response => {
            console.log("por if se queda")
