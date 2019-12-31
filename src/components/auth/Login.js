@@ -15,26 +15,30 @@ const Login = props => {
 
   useEffect(() => {
     if (props.location.state && props.location.state.loadUser) {
-       http.get("/auth/login/success", { headers: {'Access-Control-Allow-Origin': '*' }  })      
-        .then(response => {
-          console.log("por if se queda")
-          localStorage.setItem(
-            constants.CURRENT_USER_KEY,
-            JSON.stringify(response.data)
-          );
-          setCurrentUser(response.data);
-          }) 
-        .catch(error => {
-          console.log("por else se queda ", error)
-          setShowModal(true);
-          window.$("#modalBet").modal("show");
-          setNotify({
-            code: "errorLogin",
-            message: "Se ha producido un error en acceso con Twitter",
-            state: true
-          });
-        }) 
-      };
+      setTimeout(() => {
+        http.get("/auth/login/success", { headers: {'Access-Control-Allow-Origin': '*' }  })      
+         .then(response => {
+           console.log("por if se queda")
+           localStorage.setItem(
+             constants.CURRENT_USER_KEY,
+             JSON.stringify(response.data)
+           );
+           setCurrentUser(response.data);
+           }) 
+         .catch(error => {
+           console.log("por else se queda ", error)
+           setShowModal(true);
+           window.$("#modalBet").modal("show");
+           setNotify({
+             code: "errorLogin",
+             message: "Se ha producido un error en acceso con Twitter",
+             state: true
+           });
+         }) 
+       
+        
+      }, 3000);
+    }
   }, [props, setCurrentUser]);
 
   const hideModal = () => {
