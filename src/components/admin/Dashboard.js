@@ -240,7 +240,7 @@ const Dashboard = props => {
     <div id="cms-box">
       <Menu logOut={logOut} currentUser={currentUser} day={day}/>
       {updateDone && (
-        <ModalDone modal={notify} closeModal={hideModal} closeSubmit={closeSubmit} confirm={confirm}></ModalDone>
+        <ModalDone modal={notify} closeModal={hideModal} closeSubmit={closeSubmit} confirm={confirm}/>
       )}
       <div className="container box-dashboard pt-5">
         <div className="jumbotron mt-5">
