@@ -17,16 +17,17 @@ const Login = props => {
     if (props.location.state && props.location.state.loadUser) {
       console.log("entra loadUser");
       const fetchAuth = async () => {
-        const response = await http.get("/auth/login/success", { headers: {'Access-Control-Allow-Origin': '*' }  });
-        if(response) {
+        await http.get("/auth/login/success", { headers: {'Access-Control-Allow-Origin': '*' }  })      
+        .then(response => {
           console.log("por if se queda")
           localStorage.setItem(
             constants.CURRENT_USER_KEY,
             JSON.stringify(response.data)
           );
           setCurrentUser(response.data);
-        } else {
-          console.log("por else se queda")
+          }) 
+        .catch(error => {
+          console.log("por else se queda ", error)
           setShowModal(true);
           window.$("#modalBet").modal("show");
           setNotify({
