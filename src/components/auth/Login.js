@@ -58,7 +58,7 @@ const Login = props => {
     return <Redirect to="/home" />;
   }
   if (backLogin) {
-    return <Redirect to="/" />;
+    return <Redirect to="/home" />;
   }
 
   return (
