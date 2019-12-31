@@ -15,9 +15,7 @@ const Login = props => {
 
   useEffect(() => {
     if (props.location.state && props.location.state.loadUser) {
-      console.log("entra loadUser");
-      const fetchAuth = async () => {
-        await http.get("/auth/login/success", { headers: {'Access-Control-Allow-Origin': '*' }  })      
+       http.get("/auth/login/success", { headers: {'Access-Control-Allow-Origin': '*' }  })      
         .then(response => {
           console.log("por if se queda")
           localStorage.setItem(
@@ -37,8 +35,6 @@ const Login = props => {
           });
         }) 
       };
-      fetchAuth();
-    }
   }, [props, setCurrentUser]);
 
   const hideModal = () => {
@@ -54,10 +50,7 @@ const Login = props => {
     });
   };
 
-  if (currentUser) {
-    return <Redirect to="/home" />;
-  }
-  if (backLogin) {
+  if (currentUser || backLogin) {
     return <Redirect to="/home" />;
   }
 
