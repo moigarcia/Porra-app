@@ -38,7 +38,7 @@ const Login = props => {
          }) 
        
         
-      }, 3000);
+      }, 5000);
     }
   }, [props, setCurrentUser]);
 
