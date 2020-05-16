@@ -1,0 +1,15 @@
+
+version: '3'
+services: 
+  porra-app:
+    container_name: porra-app
+    restart: always
+    build:
+      context: .
+      dockerfile: ./docker/containers/porra-app/Dockerfile
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/opt/app
+      - /opt/app/node_modules
+   

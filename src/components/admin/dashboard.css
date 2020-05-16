@@ -1,5 +1,5 @@
 .box-dashboard {
-  height: 100vh;
+  height: auto;
 }
 
 @media only screen and (min-device-width: 320px) and (max-device-width: 358px) {
