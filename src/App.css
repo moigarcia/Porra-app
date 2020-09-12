@@ -8,18 +8,38 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  background-color: #DDDDDD ;
+  width: 100%;
+  min-height: 100vh;
+} 
+ #login-box {
+  height: auto;
+  background-image: url(/background-intro.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   width: 100%;
   min-height: 100vh;
 } 
 .jumbotron {
   margin-bottom: 2rem;
-  border: 2px solid grey
+  border: 2px solid #28a745;
+  background-color: #ffffff !important;
+}
+.lead {
+  font-size: 1rem !important
 }
 .red {
   color:#E2001A !important;
 }
 .bg-grey{
   background-color: #26262b
+}
+.bg-light-green{
+  background-color: lightgreen
+}
+.bg-gray-light{
+  background-color: #DDDDDD 
 }
 .bg-grey-light{
   background-color: #010101

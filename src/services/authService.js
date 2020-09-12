@@ -31,8 +31,8 @@ const getUserById = async id => {
 };
 
 const logOut = () => {
-  fetch("https://porra-api.herokuapp.com/auth/logout", {
-  // fetch("http://localhost:3001/auth/logout", {
+  //fetch("https://porra-api.herokuapp.com/auth/logout", {
+  fetch("http://localhost:3001/auth/logout", {
     method: "POST",
     credentials: "include",
     headers: {

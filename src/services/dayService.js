@@ -9,6 +9,14 @@ const getDayActually = async () => {
     throw error;
   }
 };
+const getClassification = async () => {
+  try {
+    const response = await http.get("/users/classification");
+    return response.data
+  } catch (error) {
+    throw error;
+  }
+};
 
 const pendingDay = async id => {
   try {
@@ -53,5 +61,6 @@ export default {
   getDayActually,
   pendingDay,
   closeDaySubmit,
-  updatingDaySubmit
+  updatingDaySubmit,
+  getClassification
 };

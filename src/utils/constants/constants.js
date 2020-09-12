@@ -1,5 +1,5 @@
 const CURRENT_USER_KEY = "current-user";
-const URL_AUTH = "https://porra-api.herokuapp.com/auth/twitter"
+const URL_AUTH = "http://127.0.0.1:3001/auth/twitter"
 const SCREENWEB = window.innerWidth > 600;
 const PLAYERS = [
   { id: 1, name: "koke" },

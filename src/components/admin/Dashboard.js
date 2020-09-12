@@ -6,6 +6,7 @@ import { authService, dayService } from "../../services/index";
 import Menu from "../menu/Menu";
 import { constants } from "../../utils/constants/index";
 import "./dashboard.css";
+import Loader from 'react-loader-spinner';
 import ModalDone from "../modals/ModalDone";
 
 const Dashboard = props => {
@@ -19,6 +20,7 @@ const Dashboard = props => {
   const [dayTeams, setDayTeams] = useState({ localTeam: "", visitingTeam: "" });
   const [scorers, setScorers] = useState("");
   const [ confirm, setConfirm ] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     if (props.location.state.betDay) {
@@ -31,6 +33,9 @@ const Dashboard = props => {
     } else {
       setNewDay(true);
     }
+    setTimeout(() => {
+      setLoading(false);
+    }, 1500);
   }, [setDay, setScorers, setNewDay, props.location.state.betDay]);
 
   const logOut = () => {
@@ -243,6 +248,11 @@ const Dashboard = props => {
         <ModalDone modal={notify} closeModal={hideModal} closeSubmit={closeSubmit} confirm={confirm}/>
       )}
       <div className="container box-dashboard pt-5">
+      {loading ? (
+          <div className="d-flex justify-content-center align-items-center" style={{height: '100vh'}}>
+            <Loader type="Puff" color="#00BFFF" height={100} width={100} />
+          </div>
+        ) : (
         <div className="jumbotron mt-5">
           <div className="card card-day">
             <form>
@@ -414,6 +424,7 @@ const Dashboard = props => {
             </div>
           )}
         </div>
+        )}
       </div>
     </div>
   );

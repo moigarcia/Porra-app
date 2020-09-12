@@ -12,4 +12,7 @@
   font-size: 1.25rem;
   font-family: Helvetica Neue;
 }
+.box-home .card-day {
+  border: none;
+}
 

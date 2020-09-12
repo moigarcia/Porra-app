@@ -15,9 +15,14 @@ const Login = props => {
 
   useEffect(() => {
     if (props.location.state && props.location.state.loadUser) {
-        http.get("/auth/login/success", { headers: {'Access-Control-Allow-Origin': '*' }  })      
+        http.get("/auth/login/success", { 
+          headers: {
+          'Access-Control-Allow-Origin': '*', 
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Credentials": true },
+          credentials: "include", 
+        })     
          .then(response => {
-           console.log("por if se queda")
            localStorage.setItem(
              constants.CURRENT_USER_KEY,
              JSON.stringify(response.data)
@@ -35,7 +40,7 @@ const Login = props => {
            });
          }) 
     }
-  }, [props, setCurrentUser]);
+  }, [props, setCurrentUser, setNotify]);
 
   const hideModal = () => {
     if (notify.code === "errorLogin") {
@@ -55,7 +60,7 @@ const Login = props => {
   }
 
   return (
-    <div id="cms-box">
+    <div id="login-box">
       {showModal && (
         <ModalDone modal={notify} closeModal={hideModal}/>
       )}

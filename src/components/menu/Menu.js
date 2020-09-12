@@ -21,13 +21,13 @@ const Menu = ({ currentUser, logOut, day }) => {
 
   return (
     <div className="menu-box">
-      <div className="page-wrapper chiller-theme bg-black" ready={tagsOpen()}>
-        <div className="position-fixed w-100 bg-black">
+      <div className="page-wrapper chiller-theme " ready={tagsOpen()}>
+        <div className="position-fixed w-100 bg-white">
           <div className="d-flex justify-content-between">
             <div className="box-mobile-nav icons-nav">
               <button
                 id="show-sidebar"
-                className="btn btn-sm bg-black align-self-center align-middle"
+                className="btn btn-sm align-self-center align-middle"
               >
                 <img
                   className="icon-nav-menu"
@@ -48,17 +48,17 @@ const Menu = ({ currentUser, logOut, day }) => {
             </div>
 
             <div className="box-mobile-nav icons-nav justify-content-end p-2">
-              <button className="btn-transparent white " onClick={logOut}>
-                <i className="fas fa-sign-out-alt"></i>
+              <button className="btn-transparent black" onClick={logOut}>
+                <i className="fas fa-sign-out-alt "></i>
               </button>
             </div>
           </div>
         </div>
         <nav id="sidebar" className="sidebar-wrapper ">
-          <div className="sidebar-content bg-grey">
-            <div className="sidebar-brand bg-black">
+          <div className="sidebar-content bg-white">
+            <div className="sidebar-brand bg-white">
               <div id="close-sidebar" onClick={closeMenu}>
-                <button type="button" className="white btn-transparent">
+                <button type="button" className="black btn-transparent">
                   x
                 </button>
               </div>
@@ -68,19 +68,19 @@ const Menu = ({ currentUser, logOut, day }) => {
                   className="rounded-circle"
                   alt="perfil"
                 />
-                <span className="white ml-2">
+                <span className="black ml-2">
                   @{currentUser && currentUser.userTwitter}
                 </span>
               </div>
             </div>
-            <div className="sidebar-menu bg-grey">
+            <div className="sidebar-menu bg-white">
               <ul className="align-middle ">
                 <li className="d-flex align-items-center">
                   <div className="box-mobile-nav-icon">
                     <img src="/soccer.png" alt="soccer" />
                   </div>
                   <div className="box-mobile-nav-text">
-                    <span className="white ">JORNADA</span>
+                    <span className="black ">JORNADA</span>
                   </div>
                   <div className="box-mobile-nav-icon">
                     <Link
@@ -93,7 +93,7 @@ const Menu = ({ currentUser, logOut, day }) => {
                       }}
                     >
                       <img
-                        src="/arrow_forward.png"
+                        src="/arrow.svg"
                         alt="adown_navbar"
                         className="icon-nav-menu"
                       />
@@ -105,7 +105,7 @@ const Menu = ({ currentUser, logOut, day }) => {
                     <img src="/assignment.png" alt="assignment" />
                   </div>
                   <div className="box-mobile-nav-text">
-                    <span className="white">CLASIFICACION</span>
+                    <span className="black">CLASIFICACION</span>
                   </div>
                   <div className="box-mobile-nav-icon">
                     <Link
@@ -118,7 +118,7 @@ const Menu = ({ currentUser, logOut, day }) => {
                       }}
                     >
                       <img
-                        src="/arrow_forward.png"
+                        src="/arrow.svg"
                         alt="adown_navbar"
                         className="icon-nav-menu"
                       />
@@ -131,7 +131,7 @@ const Menu = ({ currentUser, logOut, day }) => {
                       <img src="/build.png" alt="build" />
                     </div>
                     <div className="box-mobile-nav-text">
-                      <span className="white ">ADMIN</span>
+                      <span className="black ">ADMIN</span>
                     </div>
                     <div className="box-mobile-nav-icon">
                       <Link
@@ -144,7 +144,7 @@ const Menu = ({ currentUser, logOut, day }) => {
                         }}
                       >
                         <img
-                          src="/arrow_forward.png"
+                          src="/arrow.svg"
                           alt="adown_navbar"
                           className="icon-nav-menu"
                         />
